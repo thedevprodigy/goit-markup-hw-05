@@ -57,6 +57,10 @@ ul {
   line-height: 24px; /* 150% */
   letter-spacing: 0.64px;
   font-family: inherit;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .list {
@@ -163,6 +167,18 @@ ul {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* .header-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  border-radius: 2px;
+  border: 2px solid var(--ocean);
+  background-color: var(--ocean);
+  bottom: -2px;
+  width: 100%;
+  height: 4px;
+} */
+
 .header-contact {
   display: flex;
   align-items: center;
@@ -179,6 +195,27 @@ ul {
 .header-link:hover,
 .header-link:focus {
   color: var(--iris);
+}
+
+.header-link::after {
+  content: "";
+  border-radius: 2px;
+  border: 2px solid transparent;
+  height: 4px;
+  width: 100;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-link:hover::after,
+.header-link:focus::after {
+  border: 2px solid var(--ocean);
+  background-color: var(--ocean);
+  width: 100%;
 }
 
 .header-list .header-link.current {
@@ -524,8 +561,8 @@ ul {
 
 .modal-close {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 24px;
+  right: 24px;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -582,7 +619,8 @@ ul {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.features-item:hover .project-cover-text {
+.project-link:hover .project-cover-text,
+.project-link:focus .project-cover-text {
   transform: translateY(0);
 }
 /* CSS Positioning of Portfolio */
